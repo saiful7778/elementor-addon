@@ -22,6 +22,8 @@
 
 namespace Saiful_Islam_Addon;
 
+use Saiful_Islam_Addon\addon;
+
 if (!defined('ABSPATH')) {
   exit; // Exit if accessed directly.
 }
@@ -32,6 +34,10 @@ final class SaifulIslamAddon
 
   public function __construct()
   {
+    require_once(__DIR__ . '/inc/plugin.php');
+
+    addon\Register_Elementor_Addon::get_instance();
+
     add_action("init", [$this, "i18n"]);
   }
 
