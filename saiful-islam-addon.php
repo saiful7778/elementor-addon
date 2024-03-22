@@ -16,6 +16,37 @@
 * Elementor Pro tested up to: 3.20.0
 */
 
+/**
+ * Main plugin namespace
+ */
+
+namespace Saiful_Islam_Addon;
+
 if (!defined('ABSPATH')) {
   exit; // Exit if accessed directly.
 }
+
+final class SaifulIslamAddon
+{
+  private static $_instance = null;
+
+  public function __construct()
+  {
+    add_action("init", [$this, "i18n"]);
+  }
+
+  public function i18n()
+  {
+    load_plugin_textdomain("saisad");
+  }
+
+  public static function get_instance()
+  {
+    if (null === self::$_instance) {
+      self::$_instance = new Self();
+    }
+    return self::$_instance;
+  }
+}
+
+SaifulIslamAddon::get_instance();
