@@ -20,6 +20,19 @@ final class Register_Elementor_Addon
   }
   public function init()
   {
+    // add custom elementor categories
+    add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
+  }
+
+  public function add_elementor_widget_categories($elements_manager)
+  {
+    $elements_manager->add_category(
+      'saiful-islam-addon',
+      [
+        'title' => esc_html__('Saiful Islam Addon', 'saisad'),
+        'icon' => 'fa fa-plug',
+      ]
+    );
   }
 
   public function is_compatible()
